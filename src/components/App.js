@@ -1,57 +1,69 @@
-
 import React, { Component, useState } from "react";
-import '../styles/App.css';
+import "../styles/App.css";
 
 class App extends Component {
   constructor(props) {
-    super(props)
-
-    this.cityList = [
-    { name: 'Goa', country: 'India' },
-    { name: 'Amsterdam', country: 'Netherlands' },
-    { name: 'New York', country: 'USA' },
-    { name: 'Darjeeling', country: 'India' },
-    { name: 'Tokyo', country: 'Japan' },
-    { name: 'Lonavala', country: 'India' },
-    // { name: 'Brandenburg Gate', country: 'Germany' },
-    // { name: 'Reichstag Building', country: 'Germany' },
-    // { name: 'Museum Island', country: 'Germany' },
-    // { name: 'Munnar', country: 'India' },
-    // { name: 'Leh Ladakh', country: 'India' },
-    // { name: 'Goa', country: 'India' },
-    // { name: 'Agra', country: 'India' },
-    // { name: 'Dalhousie', country: 'India' },
-    // { name: 'Coorg', country: 'India' },
-    // { name: 'Rome', country: 'Italy' },
-    // { name: 'Milan', country: 'Italy' },
-    // { name: 'Venice', country: 'Italy' },
-    // { name: 'Varanasai', country: 'India' },
-    // { name: 'Jaipur', country: 'India' },
-    // { name: 'The Hofburg', country: 'Austria' },
-    // { name: 'Belvedere Palace', country: 'Austria' },
-    // { name: 'St. Stephen Cathedral', country: 'Austria' },
-    // { name: 'Kahna National Park', country: 'India' },
-    // { name: 'Amritsar', country: 'India' },
-    // { name: 'Mussoorie', country: 'India' },
-    // { name: 'Mount Abu', country: 'India' },
-    // { name: 'Tirupati', country: 'India' },
-    ]
+    super(props);
+    this.state = {
+      list: [
+        {
+          name: "naman",
+          percent: 60.0,
+        },
+        {
+          name: "ritesh",
+          percent: 99.9431,
+        },
+        {
+          name: "hitesh",
+          percent: 65.3365,
+        },
+        {
+          name: "shreya",
+          percent: 80.64,
+        },
+        {
+          name: "ankur",
+          percent: 78.897,
+        },
+        {
+          name: "vanshu",
+          percent: 78.9876,
+        },
+        {
+          name: "krupal",
+          percent: 85.3214,
+        },
+      ],
+    };
   }
-
   render() {
     return (
       <div id="main">
-        <ol>
-          {this.cityList.filter( (city)=>city.country=='India').map( (city,index)=>{
-            const key = `location${index + 1}`
-            return <li key={key}>{city.name}</li>;
-          })}
-        </ol>
-        
+        {
+          //Correct the percentage conditional for correct output
+          this.state.list.map(function (item, index) {
+            if (item.percent > 75) {
+              return (
+                //Conditional statement in the className of below div to give callName="bg-pink"
+                //if the percent >= 90 else className = ""
+                <div key={index} className={item.percent >= 90 && "bg-pink"}>
+                  <div className="name">
+                    {/* //Write code to display name */}
+                    <span>{item.name}</span>
+                  </div>
+                  <div className="percent">
+                    {/* //Write code to display percentage upto 2 decimal places */}
+                    <span>{item.percent.toFixed(2)}</span>
+                  </div>
+                </div>
+              );
+            }
+          })
+        }
       </div>
-    )
+    );
   }
 }
-
 
 export default App;
